@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jarek.kalkulator.MainActivity"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:weightSum="2"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="32dp"
+    android:paddingTop="32dp">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/simple_calc_button"
+        android:text="Simple Calc."
+        tools:text="Simple Calc."
+        android:layout_weight="0.25" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/advanced_calc_button"
+        android:text="Advanced Calc."
+        tools:text="Advanced Calc."
+        android:textAlignment="center"
+        android:layout_weight="0.25"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/about_button"
+        android:text="About"
+        tools:text="About"
+        android:textAlignment="center"
+        android:layout_weight="0.25"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/exit_button"
+        android:text="Exit"
+        android:textAlignment="center"
+        tools:text="Exit"
+        android:layout_weight="0.25"
+        android:onClick="exitApp"/>
+</LinearLayout>
