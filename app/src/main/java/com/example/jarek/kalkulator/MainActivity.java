@@ -1,5 +1,6 @@
 package com.example.jarek.kalkulator;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -7,9 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.ButterKnife;
 
+public class MainActivity extends AppCompatActivity{    //Activity {
+
+    public static int exitState = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         Button aboutButton = (Button) findViewById(R.id.about_button);
         aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if(exitState == 1) {
+            onBackPressed();
+        }
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        //Toast.makeText(this, "Ala ma kota", Toast.LENGTH_LONG).show();
     }
 
     public void exitApp(View v){
@@ -49,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBackPressed(){
+        exitState = 1;
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setMessage("Do you want to exit?");
         builder.setCancelable(true);
@@ -56,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id){
+                exitState = 0;
                 finish();
             }
         });
@@ -63,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
+                exitState = 0;
                 dialog.cancel();
             }
         });
